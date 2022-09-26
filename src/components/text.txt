@@ -1,0 +1,83 @@
+{/* Pagination */}
+                <nav aria-label="Page navigation example">
+                  <ul className="pagination flex bg-slate-500">
+                    <li className="page-item p-2 m-1 cursor-pointer">
+                      <a className="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span className="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    {/* All pages */}
+                    {users.map((user, index) => (
+                      //Hight light current page
+                      <li
+                        key={index}
+                        className={`page-item p-2 m-1 cursor-pointer ${
+                          currentPage === index + 1 ? "bg-slate-400" : ""
+                        }`}
+                      >
+                        <a
+                          onClick={() => paginate(index + 1)}
+                          className="page-link"
+                          href="#"
+                        >
+                          {index + 1}
+                        </a>
+                      </li>
+                    ))}
+                    <li className="page-item p-2 m-1 bg-slate-400 cursor-pointer">
+                      <a className="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span className="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+                <div className="container ml-[200px]">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card">
+            <div className="card-header">
+              <h4 className="card-title">Users</h4>
+            </div>
+            <div className="card-body">
+              <div className="table-responsive">
+                <table className="table">
+                  <thead className=" text-primary">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        {currentUsers.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                                <td><Link to={`/users/${user.id}`} className="btn btn-primary">View</Link></td>
+                            </tr>
+                        ))}
+                  </tbody>  
+                </table>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
